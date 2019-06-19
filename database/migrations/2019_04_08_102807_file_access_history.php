@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class FileAccessHistory extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+      Schema::create('file_access_histories', function(Blueprint $table){
+        $table->increments('id');
+        $table->text('name');
+        $table->char('ip_address', 20)->comment('The ip address of the requesting user');
+        $table->timestamps();
+        $table->softDeletes();
+      });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        //
+    }
+}
